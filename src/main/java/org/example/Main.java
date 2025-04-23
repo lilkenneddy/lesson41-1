@@ -1,17 +1,30 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static <integer> void main(String[] args) {
+        Map<String, Integer> originalMap = new HashMap<>();
+        originalMap.put("A", 1);
+        originalMap.put("B", 2);
+        originalMap.put("C", 3);
+        originalMap.put("D", 2);
+
+
+        Map<Integer, String> invertedMap = invertMap(originalMap);
+        System.out.println("Оригінальна мапа: " + originalMap);
+        System.out.println("Інверсована мапа: " + invertedMap);
+    }
+
+    public static Map<Integer, String> invertMap(Map<String, Integer> originalMap) {
+        Map<Integer, String> invertedMap = new HashMap<>();
+
+        for (Map.Entry<String, Integer> entry : originalMap.entrySet()) {
+            invertedMap.put(entry.getValue(), entry.getKey());
         }
+
+        return invertedMap;
     }
 }
